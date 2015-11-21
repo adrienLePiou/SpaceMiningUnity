@@ -8,16 +8,22 @@ public class GameController : MonoBehaviour {
 	public Transform asteroid;
 	public GameObject explosion;
 	public Camera cam;
+	public GameObject particle;
+	public GameObject healthBar;
+
 
 	public asteroidScript asteroidController;
-
+	
 	Animator anim;
 
-	private int currentHP;
+	private float currentHP;
+	private float maxHP;
 	private GameObject AsteroidClone;
 	private GameObject objCracks;
 	private GameObject Cracks;
-
+	private Vector3 mousePos;
+	private Vector3 worldPos;
+	private GameObject particleObj;
 
 	// Use this for initialization
 	void Start () {
@@ -32,11 +38,19 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
 		if (Input.GetMouseButtonDown (0)) {
 
+			mousePos = Input.mousePosition;
+			mousePos.z = 1.5f;
+			worldPos = cam.ScreenToWorldPoint(mousePos);
+			particleObj = Instantiate(particle, worldPos, Quaternion.identity) as GameObject;
 	
 			Cracks=Instantiate(cracks,new Vector3(0.0f,-3.34f, 0.0f), Quaternion.identity) as GameObject;
 			currentHP --;
+			setHealthBar(currentHP);
 
 			if(currentHP < 3){
 				objCracks=Instantiate(cracks2, new Vector3(0.0f,-3.34f, 0.0f), Quaternion.identity) as GameObject;
@@ -65,10 +79,16 @@ public class GameController : MonoBehaviour {
 	}
 
 	void createNewAsteroid(){
-		currentHP = asteroidController.getAsteroidHP ();
+		maxHP = asteroidController.getAsteroidHP ();
+		currentHP = maxHP;
+		setHealthBar (currentHP);
 		AsteroidClone=Instantiate(asteroid,new Vector3(0.0f,-3.34f, 0.0f), Quaternion.identity) as GameObject;
 	}
 
+	public void setHealthBar(float myHealth){
+		myHealth = currentHP / maxHP;
+		healthBar.transform.localScale = new Vector3(Mathf.Clamp(myHealth,0f ,1f), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+	}
 
 
 }

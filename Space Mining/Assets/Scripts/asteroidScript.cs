@@ -3,16 +3,16 @@ using System.Collections;
 
 public class asteroidScript : MonoBehaviour {
 	public GameObject asteroid;
-	public int asteroidHP;
-	public int lvl;
+	public float asteroidHP;
+	public int lvl = 1;
 
 	public Animator anim;
 
-	public int getAsteroidHP(){
+	public float getAsteroidHP(){
 		if (lvl == 1) {
-			asteroidHP = 10;
+			asteroidHP = 10f;
 		} else {
-			asteroidHP = lvl * 2;
+			asteroidHP = lvl * 2f;
 		}
 		return asteroidHP;
 	}
