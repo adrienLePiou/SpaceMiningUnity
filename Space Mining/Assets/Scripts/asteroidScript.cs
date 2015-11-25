@@ -6,13 +6,21 @@ public class asteroidScript : MonoBehaviour {
 	public float asteroidHP;
 	public int lvl = 1;
 
+
+	private float baseHP= 10f;
+	private int asteroidCrystals;
 	public Animator anim;
+
+
+
+
 
 	public float getAsteroidHP(){
 		if (lvl == 1) {
-			asteroidHP = 10f;
+			asteroidHP = baseHP;
 		} else {
-			asteroidHP = lvl * 2f;
+			// Round Up( ([Base Life] * (1.60 ^ ([Level] - 1)) + ([Level] - 1) * 10) * ([Is Boss] * 10) )
+			asteroidHP = Mathf.Round(baseHP * (Mathf.Pow(1.60f, lvl-1)));
 		}
 		return asteroidHP;
 	}
@@ -23,6 +31,19 @@ public class asteroidScript : MonoBehaviour {
 			anim.SetTrigger("explode");
 		}
 		
+	}
+
+	public int getCurrentLvl(){
+		return lvl;
+	}
+
+	public void setCurrentLvl(){
+		lvl ++;
+	}
+
+	public int getAsteroidCrystals(){
+		asteroidCrystals = 1 * lvl;
+		return asteroidCrystals;
 	}
 
 	/*public GameObject getAsteroidGO(){

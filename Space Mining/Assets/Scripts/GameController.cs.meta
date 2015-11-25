@@ -1,10 +1,29 @@
 fileFormatVersion: 2
 guid: 745d1621aaf22461c8975fe729664a69
-timeCreated: 1447772272
+timeCreated: 1448384985
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cosmonaut: {instanceID: 0}
+  - cracks: {instanceID: 0}
+  - cracks2: {instanceID: 0}
+  - asteroid: {instanceID: 0}
+  - explosion: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - particle: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - txtDmgs: {instanceID: 0}
+  - damagesCanvas: {instanceID: 0}
+  - CurrentLvlTxt: {instanceID: 0}
+  - PreviousLvlTxt: {instanceID: 0}
+  - NextLvlTxt: {instanceID: 0}
+  - MonsterKilledTxt: {instanceID: 0}
+  - TotalCrystalsTxt: {instanceID: 0}
+  - cosmonautController: {instanceID: 0}
+  - asteroidController: {fileID: 11451456, guid: ff402c40e86934361b4fd69c41e09566,
+      type: 2}
+  - moneyController: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
